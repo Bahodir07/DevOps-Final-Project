@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ game_item.title }}
+{% endblock %}
+
+{% block style %}
+    <style>
+        .game-container {
+            display: flex;
+            align-items: center;
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            gap: 20px;
+            max-width: 900px; /* Чтобы контент не растягивался */
+            margin: auto; /* Центрирование блока */
+        }
+
+        .game-img {
+            width: 250px;
+            border-radius: 5px;
+        }
+
+        .game-left {
+            display: inline-block;
+            text-align: left;
+            flex-direction: column;
+            align-items: center; /* Выравниваем заголовок и картинку */
+        }
+
+        .game-info {
+            text-align: left;
+            flex: 1;
+            color: #333;
+        }
+
+        .game-info h2 {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .game-info p {
+            font-size: 14px;
+            margin: 5px 0;
+        }
+
+        .game-info strong {
+            color: #000;
+        }
+
+        .updated-info {
+            font-size: 12px;
+            color: #777;
+            margin-bottom: 10px;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="game-container">
+        <div class="game-left">
+            <h2 class="game-title">{{ game_item.title }}</h2>
+            <p class="game-meta updated-info"><strong>🕛Дата обновления:</strong>
+                {{ game_item.updated_date|date:"d.m.Y" }}</p>
+            <img src="{{ game_item.photo.url }}" class="game-img" alt="{{ game_item.title }}">
+        </div>
+        <div class="game-left">
+            <p class="game-meta"><strong>Жанр:</strong>
+                {% for item in game_item.genres.all %}
+                    {{ item.title }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </p>
+            <p class="game-description"><strong>Описание:</strong>{{ game_item.descr }}</p>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block sidebar %}
+    {% include 'include/_sidebar.html' %}
+{% endblock %}

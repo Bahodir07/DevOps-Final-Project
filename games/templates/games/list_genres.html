@@ -1,0 +1,6 @@
+<h5 class="text-center " style="color: white;">Категории</h5>
+<div class="d-flex flex-column gap-2">
+    {% for item in genres %}
+        <a href="{{ item.get_absolute_url }}" class="btn btn-dark">{{ item.title }}</a>
+    {% endfor %}
+</div>

@@ -1,0 +1,13 @@
+{% load games_tags %}
+
+{% list_genres %}
+
+{% comment %}
+{% get_list_genres as genres %}
+<h5 class="text-center " style="color: white;">Категории</h5>
+<div class="d-flex flex-column gap-2">
+    {% for item in genres %}
+        <a href="{% url 'genre' item.pk %}" class="btn btn-dark">{{ item.title }}</a>
+    {% endfor %}
+</div>
+{% endcomment %}

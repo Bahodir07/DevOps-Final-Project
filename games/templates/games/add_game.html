@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ 'Добавить игру' }}
+{% endblock %}
+
+{% block content %}
+    <h1>Добавление Игры</h1>
+    <form action="{% url 'add_game' %}" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="{{ form.for }}" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+{% endblock %}
+
+{% block sidebar %}
+    {% include 'include/_sidebar.html' %}
+{% endblock %}

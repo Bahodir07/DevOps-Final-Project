@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}ArcadiaX{% endblock %}</title>
+    <link href="{% static 'bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+    {% block style %}
+    <style>
+        body {
+            background-image: url('/media/background.png'); /* путь к изображению */
+            background-size: cover; /* Масштабирование */
+            background-position: center; /* Центрирование */
+            background-repeat: no-repeat; /* Не повторять */
+            background-attachment: fixed; /* Фон остается на месте */
+            height: 100vh; /* Высота экрана */
+        }
+
+        .card {
+            max-width: 240px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card-img-top {
+            height: 330px; /* Увеличенный размер */
+            object-fit: cover;
+            padding: 1px;
+            background: white;
+        }
+
+        .card-body {
+            padding: 1px;
+        }
+
+        .card-title {
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .container {
+            text-align: center;
+        }
+    </style>
+{% endblock %}
+</head>
+
+<body>
+
+{% include 'include/_nav.html' %}
+
+<div class="container mt-3">
+
+    <div class="row">
+    <div class="col-md-10">
+        {% block content %}{% endblock %}
+    </div>
+    <div class="col-md-2">
+        {% block sidebar %}{% endblock %}
+    </div>
+    </div>
+</div>
+
+<script src="{% static 'bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ genre.title }}
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        {% for item in games %}
+            <div class="col-6 col-sm-4 col-md-3  mb-3">
+                <div class="card">
+                    {% if item.photo %}
+                        <a href="{{ item.get_absolute_url }}"><img src="{{ item.photo.url }}" class="card-img-top" alt="{{ item.title }}"></a>
+                    {% else %}
+                        <a href="{{ item.get_absolute_url }}">
+                            <img src="https://png.pngtree.com/png-vector/20221125/ourmid/pngtree-no-image-available-icon-flatvector-illustration-blank-avatar-modern-vector-png-image_40962406.jpg"
+                                 class="card-img-top" alt="">
+                        </a>
+                    {% endif %}
+                    <div class="card-body">
+                        <a href="{{ item.get_absolute_url }}"><h5 class="btn">{{ item.title }}</h5></a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block sidebar %}
+    {% include 'include/_sidebar.html' %}
+{% endblock %}
